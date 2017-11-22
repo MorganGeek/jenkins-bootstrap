@@ -36,3 +36,4 @@ export JENKINS_PASSWORD="${JENKINS_PASSWORD:-$(<"${JENKINS_HOME}"/secrets/initia
 jenkins_console --script "${SCRIPT_LIBRARY_PATH}/console-skip-2.0-wizard.groovy"
 jenkins_console --script ./settings.groovy --script "${SCRIPT_LIBRARY_PATH}"/configure-jenkins-settings.groovy
 jenkins_console --script ./settings.groovy --script "${SCRIPT_LIBRARY_PATH}"/configure-proxy-settings.groovy
+jenkins_console --script ./settings.groovy --script "${SCRIPT_LIBRARY_PATH}"/configure-jenkins-plugins.groovy

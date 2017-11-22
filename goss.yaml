@@ -1,0 +1,43 @@
+package:
+  git:
+    installed: true
+  jenkins:
+    installed: true
+    versions:
+    - 2.73.3
+port:
+  tcp:8080:
+    listening: true
+    ip:
+    - 0.0.0.0
+service:
+  jenkins:
+    enabled: true
+    running: false
+  sshd:
+    enabled: true
+    running: true
+user:
+  jenkins:
+    exists: true
+    groups:
+    - jenkins
+    home: /var/lib/jenkins
+    shell: /bin/false
+  sshd:
+    exists: true
+    groups:
+    - sshd
+    home: /var/empty/sshd
+    shell: /sbin/nologin
+group:
+  jenkins:
+    exists: true
+    gid: 994
+  sshd:
+    exists: true
+process:
+  service:
+    running: true
+  sshd:
+    running: true
