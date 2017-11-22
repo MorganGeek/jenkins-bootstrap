@@ -79,17 +79,6 @@ clouds_yadocker = [
     ]
 ]
 
-
-
-
-proxy_settings = [
-    'host': '127.0.0.1',
-    'port': 1234,
-    'username': 'proxy_user',
-    'password': 'proxy_password',
-    'no_proxy_hosts': 'google.be'
-]
-
 pipeline_shared_libraries = [
     'Jervis Global Library': [
         'defaultVersion': 'master',

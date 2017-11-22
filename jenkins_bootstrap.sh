@@ -37,3 +37,10 @@ jenkins_console --script "${SCRIPT_LIBRARY_PATH}/console-skip-2.0-wizard.groovy"
 jenkins_console --script ./settings.groovy --script "${SCRIPT_LIBRARY_PATH}"/configure-jenkins-settings.groovy
 jenkins_console --script ./settings.groovy --script "${SCRIPT_LIBRARY_PATH}"/configure-proxy-settings.groovy
 jenkins_console --script ./settings.groovy --script "${SCRIPT_LIBRARY_PATH}"/configure-jenkins-plugins.groovy
+
+if [ "$(jenkins_console --script "${SCRIPT_LIBRARY_PATH}"/upgrade/needsRestart.groovy)" == 'true' ]; then
+  #restart Jenkins
+  jenkins_console --script <(echo "Jenkins.instance.restart()")
+  echo "Jenkins is restarting."
+fi
+

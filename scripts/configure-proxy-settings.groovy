@@ -20,10 +20,10 @@ String proxy_password = (proxy_settings.optString('password'))?:''
 String no_proxy_hosts = (proxy_settings.optString('no_proxy_hosts'))?:''
 
 def proxy = Jenkins.instance.proxy
-if (!(proxy instanceof hudson.ProxyConfiguration)) {
+if (proxy_settings && !(proxy instanceof hudson.ProxyConfiguration)) {
     save = true
 }
-else {
+else if (proxy_settings) {
     if(proxy_host != proxy.name) {
         save = true
     }
@@ -40,7 +40,7 @@ else {
         save = true
     }
 }
-if(save) {
+if(proxy_settings && save) {
    proxy = new hudson.ProxyConfiguration(
         proxy_settings.optString('host'),
         proxy_settings.optInt('port'),
@@ -49,6 +49,10 @@ if(save) {
         proxy_settings.optString('no_proxy_hosts'))
     Jenkins.instance.proxy = proxy
     println 'Proxy configured'
+} 
+else if (!proxy_settings && proxy != null) {
+    Jenkins.instance.proxy = null
+    println 'Proxy destroyed'
 }
 else {
     println 'Nothing changed. Proxy already configured'
