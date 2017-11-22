@@ -79,6 +79,8 @@ clouds_yadocker = [
     ]
 ]
 
+Set<String> plugins_to_install = ["ontrack", "credentials"]
+
 pipeline_shared_libraries = [
     'Jervis Global Library': [
         'defaultVersion': 'master',
